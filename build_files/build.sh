@@ -2,23 +2,41 @@
 
 set -ouex pipefail
 
+### Copy system files
+
+rsync -rvK /ctx/system_files/ /
+
+chmod +x /usr/libexec/aurora-dx-groups
+
 ### Install packages
 
-# Packages can be installed from any enabled yum repo on the image.
-# RPMfusion repos are available by default in ublue main images
-# List of rpmfusion packages can be found here:
-# https://mirrors.rpmfusion.org/mirrorlist?path=free/fedora/updates/39/x86_64/repoview/index.html&protocol=https&redirect=1
+# Packages for my Niri setup
 
-# this installs a package from fedora repos
-dnf5 install -y tmux 
+dnf5 -y copr enable ulysg/xwayland-satellite
+dnf5 -y copr enable yalter/niri
 
-# Use a COPR Example:
-#
-# dnf5 -y copr enable ublue-os/staging
-# dnf5 -y install package
-# Disable COPRs so they don't end up enabled on the final image:
-# dnf5 -y copr disable ublue-os/staging
+dnf5 install -y blueman brightnessctl foot mako network-manager-applet niri pavucontrol swaybg swaylock waybar wlogout wf-recorder hyprpicker squeekboard
 
-#### Example for enabling a System Unit File
+dnf5 -y copr disable ulysg/xwayland-satellite
+dnf5 -y copr disable yalter/niri
+
+# Stuff from DX version but without VSCode and Cockpit
+
+#ublue-os staging
+dnf5 -y copr enable ublue-os/staging
+#ublue-os packages
+dnf5 -y copr enable ublue-os/packages
+#podman-bootc
+dnf -y copr enable gmaglione/podman-bootc
+
+dnf5 install -y android-tools libvirt libvirt-nss mozilla-fira-mono-fonts osbuild-selinux p7zip p7zip-plugins podman-bootc podman-compose podman-machine podman-tui podmansh powerline-fonts qemu qemu-char-spice  qemu-device-display-virtio-gpu qemu-device-display-virtio-vga qemu-device-usb-redirect qemu-img qemu-system-x86-core qemu-user-binfmt qemu-user-static ublue-os-libvirt-workarounds virt-manager ydotool virt-viewer virt-v2v google-droid-sans-mono-fonts google-go-mono-fonts ibm-plex-mono-fonts intel-one-mono-fonts genisoimage flatpak-builder
+
+dnf5 -y copr disable ublue-os/staging
+dnf5 -y copr disable ublue-os/packages
+dnf -y copr disable gmaglione/podman-bootc
+
+### Activate system services
 
 systemctl enable podman.socket
+systemctl enable libvirt-workaround.service
+systemctl enable aurora-dx-groups.service
