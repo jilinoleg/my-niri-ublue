@@ -27,13 +27,17 @@ dnf5 -y copr enable ublue-os/staging
 #ublue-os packages
 dnf5 -y copr enable ublue-os/packages
 #podman-bootc
-dnf -y copr enable gmaglione/podman-bootc
+dnf5 -y copr enable gmaglione/podman-bootc
+dnf5 -y copr enable amneziavpn/amneziawg
 
 dnf5 install -y android-tools libvirt libvirt-nss mozilla-fira-mono-fonts osbuild-selinux p7zip p7zip-plugins podman-bootc podman-compose podman-machine podman-tui podmansh powerline-fonts qemu qemu-char-spice  qemu-device-display-virtio-gpu qemu-device-display-virtio-vga qemu-device-usb-redirect qemu-img qemu-system-x86-core qemu-user-binfmt qemu-user-static ublue-os-libvirt-workarounds virt-manager ydotool virt-viewer virt-v2v google-droid-sans-mono-fonts google-go-mono-fonts ibm-plex-mono-fonts intel-one-mono-fonts genisoimage flatpak-builder
+dnf5 install -y amneziawg-dkms amneziawg-tools
 
 dnf5 -y copr disable ublue-os/staging
 dnf5 -y copr disable ublue-os/packages
-dnf -y copr disable gmaglione/podman-bootc
+dnf5 -y copr disable gmaglione/podman-bootc
+dnf5 -y copr disable amneziavpn/amneziawg
+
 
 ### Activate system services
 
