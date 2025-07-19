@@ -42,7 +42,7 @@ dnf5 install -y android-tools libvirt libvirt-nss mozilla-fira-mono-fonts osbuil
 # dnf5 install -y amneziawg-dkms amneziawg-tools
 
 systemctl enable podman.socket
-systemctl enable libvirt-workaround.service
+# systemctl enable libvirt-workaround.service
 
 dnf5 -y copr disable ublue-os/staging
 dnf5 -y copr disable ublue-os/packages
