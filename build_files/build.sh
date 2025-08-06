@@ -14,6 +14,7 @@ systemctl enable aurora-dx-groups.service
 
 ### Install packages
 
+
 # Packages for my Niri setup
 
 echo ":Installing Niri and related software"
@@ -25,6 +26,16 @@ dnf5 install -y blueman brightnessctl foot mako network-manager-applet niri pavu
 
 dnf5 -y copr disable ulysg/xwayland-satellite
 dnf5 -y copr disable yalter/niri
+
+# Replacing doas with sudo
+
+echo ":Installing Doas instead of sudo"
+
+dnf5 install -y opendoas
+dnf5 remove -y sudo
+
+ln -s /usr/bin/sudo /usr/bin/doas
+
 
 # Stuff from DX version but without VSCode and Cockpit
 
