@@ -14,6 +14,5 @@ rm /etc/yum.repos.d/throne.repo
 
 echo ":Trying to set suid for Throne"
 
-chown root:root
 chmod u+s /usr/lib64/Throne/Core
 
