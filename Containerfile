@@ -32,7 +32,7 @@ RUN --mount=type=bind,from=ctx,source=/,target=/ctx \
     --mount=type=cache,dst=/var/cache \
     --mount=type=cache,dst=/var/log \
     --mount=type=tmpfs,dst=/tmp \
-    /ctx/02_replace_sudo.sh && \
+    /ctx/02_misc_changes.sh && \
     ostree container commit
 
 RUN --mount=type=bind,from=ctx,source=/,target=/ctx \
