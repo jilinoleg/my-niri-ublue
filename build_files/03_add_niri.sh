@@ -10,7 +10,7 @@ dnf5 -y copr enable ulysg/xwayland-satellite
 dnf5 -y copr enable yalter/niri
 dnf5 -y copr enable avengemedia/dms
 
-dnf5 install -y niri dms brightnessctl foot pavucontrol wf-recorder squeekboard xwayland-satellite
+dnf5 install -y niri dms brightnessctl foot pavucontrol wf-recorder xwayland-satellite
 
 dnf5 -y copr disable ulysg/xwayland-satellite
 dnf5 -y copr disable yalter/niri
